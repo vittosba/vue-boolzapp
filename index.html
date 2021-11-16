@@ -49,9 +49,9 @@
                     <input type="text" placeholder="Cerca o inizia una nuova chat" class="p-10">
                 </div>
                 <ul>
-                    <li>
-                        <img src="./img/avatar_1.jpg" alt="" class="br-50">
-                        <div class="name">Michele</div>
+                    <li v-for="contact in contacts">
+                        <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name" class="br-50">
+                        <div class="name">{{contact.name}}</div>
                     </li>
                 </ul>
             </section>
