@@ -19,9 +19,61 @@ body {
     align-items: center;
 }
 
+/* UTILITIES */
 .container {
+    display: flex;
     width: 80%;
     min-width: 900px;
     height: 95%;
     background: #fff;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.br-50 {
+    border-radius: 50%;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 35%;
+    border-right: 1px solid #e2e2e2;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ededed;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    height: 3rem;
+}
+
+.header-left .last-access {
+    font-size: .8rem;
+    margin-top: 5px;
+    color: #787e82;
+}
+
+.header-right i {
+    color: #bababa;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    width: 65%;
 }
