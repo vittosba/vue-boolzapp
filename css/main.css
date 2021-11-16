@@ -153,5 +153,41 @@ header {
 
 /* MAIN CONTENT */
 .main-content {
+    display: flex;
+    flex-direction: column;
     width: 65%;
+}
+
+.main-content .messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 60px 80px;
+    background-image: url(../img/mine.jpg);
+    overflow: auto;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 15px 5px 5px 15px;
+    border-radius: 10px;
+}
+
+.sent {
+    align-self: end;
+    background: #ddfabf;
+}
+
+.received {
+    align-self: start;
+    background: #fff;
+}
+
+.date {
+    align-self: end;
+    color: #787e82;
+    margin-top: 5px;
+    font-size: .7rem;
 }
