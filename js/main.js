@@ -86,10 +86,30 @@ const app = new Vue({
             },
         ],
         activeChat: 0,
+        newMessage:'',
     },
     methods: {
         setChat(chatIndex) {
             this.activeChat = chatIndex;
+        },
+        addMessage() {
+            if(this.newMessage !== '') {
+                this.contacts[this.activeChat].messages.push({
+                    date: '12/12',
+                    text: this.newMessage,
+                    status: 'sent',
+                });
+
+                // clean
+                this.newMessage = '';
+
+                // answer
+                this.contacts[this.activeChat].messages.push({
+                    date: '12/12',
+                    text: 'ok',
+                    status: 'received',
+                });
+            }
         }
     }
 })
