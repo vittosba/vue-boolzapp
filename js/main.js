@@ -85,5 +85,11 @@ const app = new Vue({
                 ],
             },
         ],
+        activeChat: 0,
     },
+    methods: {
+        setChat(chatIndex) {
+            this.activeChat = chatIndex;
+        }
+    }
 })

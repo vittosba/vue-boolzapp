@@ -140,6 +140,11 @@ header {
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid #e2e2e2;
+    cursor: pointer;
+}
+
+.contacts ul li:hover {
+    background: #e2e2e2;
 }
 
 .contacts ul li:last-child {
@@ -172,6 +177,7 @@ header {
     flex-direction: column;
     width: 40%;
     padding: 15px 5px 5px 15px;
+    margin-bottom: 5px;
     border-radius: 10px;
 }
 
