@@ -94,8 +94,9 @@ const app = new Vue({
         },
         addMessage() {
             if(this.newMessage !== '') {
+                const nowNewMessagge = dayjs().format('DD/MM/YY HH:mm:ss');
                 this.contacts[this.activeChat].messages.push({
-                    date: '12/12',
+                    date: nowNewMessagge,
                     text: this.newMessage,
                     status: 'sent',
                 });
@@ -104,12 +105,16 @@ const app = new Vue({
                 this.newMessage = '';
 
                 // answer
+                setTimeout(this.answer, 1000);
+            }
+        },
+        answer() {
+            const nowAnswer = dayjs().format('DD/MM/YY HH:mm:ss');
                 this.contacts[this.activeChat].messages.push({
-                    date: '12/12',
+                    date: nowAnswer,
                     text: 'ok',
                     status: 'received',
                 });
-            }
-        }
+        },
     }
 })
