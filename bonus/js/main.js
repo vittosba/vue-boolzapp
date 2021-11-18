@@ -99,6 +99,14 @@ const app = new Vue({
         activeChat: 0,
         newMessage:'',
         nameConctact: '',
+        username: '',
+        showUsername: true,
+        showOTP: false,
+        showCodeOTP: false,
+        codeOTP: '',
+        userOTP: '',
+        login: 'not-logged',
+        errorOTP: '',
     },
     methods: {
         setChat(chatIndex) {
@@ -144,5 +152,26 @@ const app = new Vue({
         deleteMessage(messageIndex) {
             this.contacts[this.activeChat].messages.splice(messageIndex, 1);
         },
+        newUsername() {
+            if(this.username !== '') {
+                this.showUsername = false;
+                this.showOTP = true;
+            }
+        },
+        genOTP() {
+            this.codeOTP = Math.floor(Math.random() * (1000000 - 100000) ) + 100000;
+            this.showCodeOTP = true;
+        },
+        checkOTP() {
+            if(this.codeOTP === parseInt(this.userOTP)) {
+                this.login = 'logged';
+            }
+            else {
+                this.errorOTP = 'codice OTP sbagliato, riprovare';
+                this.genOTP();
+                this.userOTP = '';
+            }
+        }
+
     }
 })

@@ -24,7 +24,7 @@
             <header class="p-10">
                 <div class="header-left">
                     <img src="./img/avatar_io.jpg" alt="" class="br-50">
-                    <span>Nome Utente</span>
+                    <span>{{username}}</span>
                 </div>
                 <div class="header-right">
                     <i class="fas fa-circle-notch mr-10"></i>
@@ -111,6 +111,21 @@
                 <i class="fas fa-microphone"></i>
             </footer>
         </section>
+        <div class="login" :class="login">
+            <div class="username" v-show="showUsername">
+                <input type="text" placeholder="Username" v-model.trim="username" @keyup.enter="newUsername">
+                <button @click="newUsername">Invia</button>
+            </div>
+            <div class="codice-otp" v-show="showOTP">
+                <button @click="genOTP" v-show="!showCodeOTP">Richiedi codice OTP</button>
+                <div>
+                    <input type="text" placeholder="Inserisci codice OTP" v-model.trim="userOTP" @keyup.enter="checkOTP" v-show="showCodeOTP" >
+                    <button @click="checkOTP" v-show="showCodeOTP" >Invia codice OTP</button>
+                    <div>{{ errorOTP }}</div>
+                </div>
+            </div>
+            <div class="notifica-otp" v-show="showOTP && showCodeOTP">NOTIFICA: Codice OTP: {{ codeOTP }}</div>
+        </div>
     </div>
 
     <!-- dayjs -->
