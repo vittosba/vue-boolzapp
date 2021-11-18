@@ -60,9 +60,9 @@
         <section class="main-content">
             <header class="p-10">
                 <div class="header-left">
-                    <img src="./img/avatar_1.jpg" alt="" class="br-50">
+                    <img :src="`./img/avatar${contacts[activeChat].avatar}.jpg`" :alt="contacts[activeChat].name" class="br-50">
                     <div>
-                        <div>Michele</div>
+                        <div>{{contacts[activeChat].name}}</div>
                         <div class="last-access">Ultimo accesso oggi alle 10.35</div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         10/01/2021 15:50:00
                     </div>
                 </div> -->
-                <div class="message" v-for="(message, index) in contacts[activeChat].messages" :class="{sent: message.status === 'sent', received: message.status === 'received'}" >
+                <div class="message" v-for="(message, index) in contacts[activeChat].messages" :class="message.status" >
                     <div>
                         {{message.text}}
                     </div>
