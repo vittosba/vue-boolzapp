@@ -121,7 +121,7 @@
                 <div>
                     <input type="text" placeholder="Inserisci codice OTP" v-model.trim="userOTP" @keyup.enter="checkOTP" v-show="showCodeOTP" >
                     <button @click="checkOTP" v-show="showCodeOTP" >Invia codice OTP</button>
-                    <div>{{ errorOTP }}</div>
+                    <div class="c-red">{{ errorOTP }}</div>
                 </div>
             </div>
             <div class="notifica-otp" v-show="showOTP && showCodeOTP">NOTIFICA: Codice OTP: {{ codeOTP }}</div>
