@@ -46,10 +46,10 @@
                     <span class="btn">
                         <i class="fas fa-search"></i>
                     </span>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" class="p-10">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" class="p-10" v-model.trim.lowercase="nameConctact" @keyup="searchChat">
                 </div>
                 <ul>
-                    <li v-for="(contact, index) in contacts" @click="setChat(index)">
+                    <li v-for="(contact, index) in contacts" @click="setChat(index)" v-show="contact.visible">
                         <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name" class="br-50">
                         <div class="name">{{contact.name}}</div>
                     </li>

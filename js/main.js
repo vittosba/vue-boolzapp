@@ -87,6 +87,7 @@ const app = new Vue({
         ],
         activeChat: 0,
         newMessage:'',
+        nameConctact: '',
     },
     methods: {
         setChat(chatIndex) {
@@ -116,5 +117,15 @@ const app = new Vue({
                     status: 'received',
                 });
         },
+        searchChat() {
+            for(let i = 0; i < this.contacts.length; i++) {
+                if(this.contacts[i].name.toLowerCase().includes(this.nameConctact)) {
+                    this.contacts[i].visible = true;
+                }
+                else {
+                    this.contacts[i].visible = false;
+                }
+            }
+        }
     }
 })
