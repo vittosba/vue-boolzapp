@@ -68,7 +68,9 @@ body {
     background: rgb(68, 190, 84);
 }
 
-
+.c-red {
+    color: red;
+}
 
 .p-10 {
     padding: 10px;
