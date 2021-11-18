@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Icon -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css' integrity='sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==' crossorigin='anonymous'/>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app" class="container">
+        <!-- Left -->
+        <aside class="sidebar">
+            <header class="p-10">
+                <div class="header-left">
+                    <img src="./img/avatar_io.jpg" alt="" class="br-50">
+                    <span>Nome Utente</span>
+                </div>
+                <div class="header-right">
+                    <i class="fas fa-circle-notch mr-10"></i>
+                    <i class="fas fa-comment-alt mr-10"></i>
+                    <i class="fas fa-ellipsis-v mr-10"></i>
+                </div>
+            </header>
+            <section class="notification p-20">
+                <div class="br-50 p-10 bg-white">
+                    <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="text">
+                    <div>Ricevi notifiche di nuovi messaggi</div>
+                    <a href="#">Attiva notifiche desktop</a>
+                </div>
+            </section>
+            <section class="contacts">
+                <div class="search p-10">
+                    <span class="btn">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" class="p-10" v-model.trim.lowercase="nameConctact" @keyup="searchChat">
+                </div>
+                <ul>
+                    <li v-for="(contact, index) in contacts" @click="setChat(index)" v-show="contact.visible">
+                        <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name" class="br-50">
+                        <div class="name">{{contact.name}}</div>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <!-- Right -->
+        <section class="main-content">
+            <header class="p-10">
+                <div class="header-left">
+                    <img :src="`./img/avatar${contacts[activeChat].avatar}.jpg`" :alt="contacts[activeChat].name" class="br-50">
+                    <div>
+                        <div>{{contacts[activeChat].name}}</div>
+                        <div class="last-access">Ultimo accesso oggi alle 10.35</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <i class="fas fa-search mr-10"></i>
+                    <i class="fas fa-paperclip mr-10"></i>
+                    <i class="fas fa-ellipsis-v mr-10"></i>
+                </div>
+            </header>
+            <main class="messages">
+                <!-- <div class="message sent">
+                    <div>
+                        messaggio inviato
+                    </div>
+                    <div class="date">
+                        10/01/2021 15:50:00
+                    </div>
+                </div>
+                <div class="message received"> 
+                    <div>
+                        messaggio ricevuto
+                    </div>
+                    <div class="date">
+                        10/01/2021 15:50:00
+                    </div>
+                </div> -->
+                <div class="message" v-for="(message, index) in contacts[activeChat].messages" :class="message.status" >
+                    <div class="message-text">
+                        <div>
+                            {{message.text}}
+                        </div>
+                        <i class="fas fa-chevron-down" @click="showMessageMenu(index)"></i>
+                        <div class="message-menu" v-show="message.menuVisible">
+                            <div>Message info</div>
+                            <div @click="deleteMessage(index)">Delete message</div>
+                        </div>
+                    </div>
+                    <div class="date">
+                        {{message.date}}
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio" @keyup.enter="addMessage" v-model.trim="newMessage">
+                <i class="fas fa-microphone"></i>
+            </footer>
+        </section>
+    </div>
+
+    <!-- dayjs -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+    <!-- Main JS -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
